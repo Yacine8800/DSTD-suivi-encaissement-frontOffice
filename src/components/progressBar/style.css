@@ -1,0 +1,70 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    position: relative;
+}
+
+.card {
+    display: flex;
+    position: absolute;
+    background-color: #FFFFFF;
+    width: 515px;
+    height: 57px;
+    top: 137px;
+    left: 325px;
+    border: 0.1px gray solid;
+    border-radius: 7px;
+}
+
+.card div {
+    padding-left: 5px;
+}
+
+.title {
+    font-weight: 500;
+}
+
+.progressbar{
+    width: 335px;
+    height: 5.7px;
+    top: 171px;
+    left: 480px;
+    color: #E87A01;
+}
+
+.tauxcompletion {
+    color: #984F00;
+    padding-left: 300px;
+}
+
+.right_element{
+    padding-top: 5px;
+}
+
+.bg-primary {
+    --tw-bg-opacity: 1;
+    background-color: #E87A01;
+}
+
+
+.titleSuivie {
+    position: absolute;
+    width: 515px;
+    height: 57px;
+    top: 233px;
+    left: 325px;
+}
+
+.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: white;
+    overflow: auto;
+  }

@@ -4,12 +4,12 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="">
+    <div className="bg-[#F8F8F8]">
       <Card
-        className="mx-[100px] h-[900px] mt-[60px] overflow-hidden flex items-center justify-center"
+        className=" h-[900px] overflow-hidden flex items-center justify-center p-3 bg-[#F8F8F8]"
         elevation={0}
       >
-        <div className="w-full">
+        <div className="w-full ">
           <EnciassmentSection />
         </div>
       </Card>

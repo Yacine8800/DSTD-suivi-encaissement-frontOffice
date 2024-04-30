@@ -10,7 +10,7 @@ body {
 .card {
     display: flex;
     position: absolute;
-    background-color: #FFFFFF;
+    background-color: #a93535;
     width: 515px;
     height: 57px;
     top: 137px;
@@ -28,7 +28,8 @@ body {
 }
 
 .progressbar{
-    width: 335px;
+    width: 50%;
+    background-color: #E87A01;
     height: 5.7px;
     top: 171px;
     left: 480px;

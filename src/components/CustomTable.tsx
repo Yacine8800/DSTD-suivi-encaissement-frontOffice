@@ -6,29 +6,17 @@ import expandsOffIcon from "../../public/assets/svg/extendsOff.svg";
 import expandsIcon from "../../public/assets/svg/extends.svg";
 import LinearWithValueLabel from "./progressBar/progressBar";
 import {
-	Button,
 	createTheme,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogTitle,
 	IconButton,
 	InputBase,
 	Paper,
 	styled,
-	TextField,
 } from "@mui/material";
 import { SearchIcon } from "lucide-react";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-// import dayjs from "dayjs";
-// import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-// import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-// import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-// import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
 import FormsControl from "./forms/formsModal";
-// import { DateField } from "@mui/x-date-pickers";
-// import AdapterDateFns from "@mui/lab/AdapterDateFns";
+
 import "./customTable.css";
 interface AliasMapping {
 	[key: string]: string;
@@ -59,6 +47,7 @@ interface DataSuivEnc {
 	montantCaisse: number;
 	montantBordereau: number;
 	dateCloture: string;
+	montant_banque: number;
 	bordereau: string;
 	ecart: number;
 	dateRev: string;
@@ -102,7 +91,9 @@ const DataSuivEnc: DataSuivEnc[] = [
 	{
 		dateEnc: "03/12/2024",
 		caisseMode: "2 -1 Espece",
-		banque: "NSIA 521575",
+		banque: "NSIA",
+		montant_banque: 521575,
+
 		montantCaisse: 2266965,
 		montantBordereau: 2266965,
 		dateCloture: "03/12/2024",
@@ -114,7 +105,8 @@ const DataSuivEnc: DataSuivEnc[] = [
 	{
 		dateEnc: "03/12/2018",
 		caisseMode: "2 -1 Espece",
-		banque: "NSIA 521575",
+		banque: "NSIA",
+		montant_banque: 521575,
 		montantCaisse: 2266965,
 		montantBordereau: 4578965,
 		dateCloture: "03/12/2018",
@@ -126,7 +118,9 @@ const DataSuivEnc: DataSuivEnc[] = [
 	{
 		dateEnc: "03/12/2024",
 		caisseMode: "2 -1 Espece",
-		banque: "NSIA 521575",
+		banque: "NSIA ",
+		montant_banque: 521575,
+
 		montantCaisse: 2266965,
 		montantBordereau: 2266965,
 		dateCloture: "03/12/2024",
@@ -139,26 +133,16 @@ const DataSuivEnc: DataSuivEnc[] = [
 
 const TableComponent = () => {
 	const [currentPage, setCurrentPage] = useState(1);
-	const [isExpanded, setIsExpanded] = useState(false); // Ajout de l'état pour suivre l'expansion du tableau
+	const [isExpanded, setIsExpanded] = useState(false);
 
 	// test
-	const [progress, setProgress] = useState(0); // Ajout de l'état de progression
+	const [progress, setProgress] = useState(0);
 	const nbrTotalExc = 1;
 	useEffect(() => {
-		/*
-    Le taux de complétion peut être calculé en divisant le nombre de tâches terminées par le nombre total de tâches, puis en multipliant le résultat par 100 pour obtenir le pourcentage. Par exemple, si une personne a terminé 8 tâches sur 10, son taux de complétion serait de 80 %.
-    */
-		// Calculer la progression en fonction de votre tableau
 		console.log(DataSuivEnc.length);
-		const calculatedProgress = (nbrTotalExc / DataSuivEnc.length) * 100; // Par exemple, 10% de progression par élément
+		const calculatedProgress = (nbrTotalExc / DataSuivEnc.length) * 100;
 		setProgress(calculatedProgress);
 	}, []);
-	console.log(DataSuivEnc);
-	console.log(DataSuivEnc.length);
-	console.log((nbrTotalExc / DataSuivEnc.length) * 100);
-	console.log(nbrTotalExc);
-	console.log(progress);
-	// fin test
 
 	const itemsPerPage = 5;
 	const totalPages = Math.ceil(DataSuivEnc.length / itemsPerPage);
@@ -174,7 +158,8 @@ const TableComponent = () => {
 			<Paper
 				component="form"
 				sx={{ p: "2px 4px", display: "flex", alignItems: "center" }}
-				className="max-md:w-[30%] md:w-[50%] rounded-md shadow-none border-[1px]"
+				className="w-[60%] rounded-md shadow-none border-[1px]"
+				elevation={0}
 			>
 				<IconButton type="button" sx={{ p: "7px" }} aria-label="search">
 					<SearchIcon />
@@ -197,9 +182,7 @@ const TableComponent = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedRowData, setSelectedRowData] = useState([]);
 	const openModal = (rowData: any) => {
-		// Ouvrez le modal avec les données de la ligne passées en tant que prop
 		setIsOpen(true);
-		// Stockez les données de la ligne dans l'état du modal
 		setSelectedRowData(rowData);
 	};
 	const closeModal = () => setIsOpen(false);
@@ -228,9 +211,7 @@ const TableComponent = () => {
 	const handleDateChange = (date: any) => {
 		setSelectedDate(date);
 	};
-	// if (selectedDate != null) {
-	// 	console.log(selectedDate.toLocaleDateString());
-	// }
+
 	const theme = createTheme({
 		palette: {
 			background: {
@@ -250,7 +231,7 @@ const TableComponent = () => {
 		"datapick:": {
 			backgroundColor: "blue",
 			fontFamily: "Arial, sans-serif",
-			fontWeight: "100", // "thin" est équivalent à 300 dans la plupart des cas
+			fontWeight: "100",
 		},
 	}));
 	return (
@@ -271,15 +252,12 @@ const TableComponent = () => {
 					otherValue={DataSuivEnc}
 					className="w-full float-left"
 				/>
-				<div className="mr-1 min-w-60 lowercase">
-					{/* <input type="date" name="bday" className="min-w-full p-3.5 rounded-sm focus:border-none"/> */}
+				<div className="w-[40%] mr-3 lowercase">
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
-						{/* <DemoContainer components={["DatePicker"]}> */}
 						<DatePicker
 							className="datapick"
 							value={selectedDate}
 							onChange={handleDateChange}
-							// renderInput={(params) => <TextField {...params} />}
 							sx={{
 								bgcolor: "background.paper",
 								fontWeight: "light",
@@ -287,24 +265,19 @@ const TableComponent = () => {
 								textTransform: "lowercase",
 							}}
 						/>
-						{/* </DemoContainer> */}
 					</LocalizationProvider>
 					<div></div>
 				</div>
 				<CustomizedInputBase />
-				{/* <div className="w-[50%] bg-slate-900 float-right">
-          <input type="search" name="" id="" />
-        </div> */}
 			</div>
 			<div className=" flex justify-center items-center w-full">
-				{/* Passer la valeur de progression au composant de barre de progression */}
 				<div
 					className={
 						isExpanded ? "absolute top-0 left-0 w-full items-start" : ""
 					}
 					style={
 						isExpanded
-							? { width: "100%", height: "100%", backgroundColor: "white" }
+							? { width: "100%", height: "100%", backgroundColor: "#f8f8f8" }
 							: { width: "100%" }
 					}
 				>
@@ -398,7 +371,6 @@ const TableComponent = () => {
 					>
 						<div className="flex w-full bg-[#F3F2F1] items-center gap-1 p-1 sticky mb-1 top-0 left-0 z-10 overflow-auto ">
 							{Object.keys(ALIAS_MAPPING_SUIV_ENC).map((key) => (
-								// header table
 								<div
 									className="text-black flex items-center w-full justify-start h-14 ml-1 font-normal text-sm"
 									style={{ width: aliasWidth(key) }}
@@ -420,7 +392,6 @@ const TableComponent = () => {
 									>
 										<div className="flex flex-col justify-start ml-2">
 											<span className="text-gray-700">{row.dateEnc}</span>
-											{/* <span className="text-gray-400">{row.prenom}</span> */}
 										</div>
 									</div>
 									<div

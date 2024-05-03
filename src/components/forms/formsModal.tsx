@@ -280,6 +280,9 @@ const FormsControl = ({
 															<p className="font-bold">
 																{rowData?.banque ? rowData?.banque : "---"}
 																<span className="justify-end items-end">
+																	{rowData?.montant_banque
+																		? rowData?.montant_banque
+																		: "---"}
 																	FCFA
 																</span>{" "}
 															</p>

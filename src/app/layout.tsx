@@ -11,6 +11,7 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+<<<<<<< HEAD
 	return (
 		<html lang="en">
 			<head>
@@ -26,4 +27,21 @@ export default function RootLayout({
 			</body>
 		</html>
 	);
+=======
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <body
+        style={{
+          // background: `linear-gradient(to right, #ECF7F9, #F4F6F3)`,
+          background: "#F8F8F8",
+        }}
+      >
+        <AppProviders>{children}</AppProviders>
+      </body>
+    </html>
+  );
+>>>>>>> 6ecaaa9a4bafdea841981552cb0d4a4b9300d346
 }

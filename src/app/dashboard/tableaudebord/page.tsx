@@ -7,7 +7,7 @@ const page = () => {
     //   <Barchart1 />
     // </div>
 
-    <div className="w-full ">
+    <div className=" ">
       <TableaudebordSection />
     </div>
   );

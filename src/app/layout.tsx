@@ -15,6 +15,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
         style={{

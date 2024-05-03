@@ -68,9 +68,45 @@ const customTick = ({ x, y, payload }: { x: any; y: any; payload: any }) => {
   );
 };
 
+interface LegendEntry {
+  color: string;
+  value: string;
+}
+
+const renderLegend = (props: any) => {
+  const { payload } = props;
+
+  return (
+    <ul
+      style={{
+        listStyle: "none",
+        margin: 15,
+        padding: 0,
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "nowrap",
+        overflowX: "auto",
+        marginLeft: 22,
+      }}
+    >
+      {payload.map((entry: LegendEntry, index: number) => (
+        <li
+          key={`item-${index}`}
+          style={{ display: "flex", alignItems: "center", marginRight: 80 }}
+        >
+          <svg width="10" height="10" style={{ marginRight: 5 }}>
+            <rect width="10" height="10" rx="5" ry="5" fill={entry.color} />
+          </svg>
+          <span style={{ fontSize: "10px" }}>{entry.value}</span>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const Barchart1 = () => {
   return (
-    <BarChart width={810} height={600} data={data}>
+    <BarChart width={700} height={600} data={data} barGap={10}>
       <XAxis
         dataKey="name"
         tick={customTick}
@@ -81,28 +117,34 @@ const Barchart1 = () => {
         contentStyle={{
           fontSize: "10px",
           lineHeight: "15px",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          border: "none",
+          borderRadius: "4px",
+          padding: "10px",
         }}
       />
       <Legend
-        wrapperStyle={{
-          fontSize: "10px",
-          marginTop: "-15px",
-        }}
+        content={renderLegend}
         verticalAlign="top"
-        iconType="square"
-        className="mr-7 "
+        wrapperStyle={{
+          fontSize: "25px",
+          fontFamily: "Open Sans",
+          justifyContent: "start",
+          fontWeight: "400",
+          lineHeight: "20px",
+        }}
       />
       <Bar
         dataKey="Montant Bordereau"
         fill="#58969E"
         radius={[10, 10, 0, 0]}
-        barSize={10}
+        barSize={12}
       />
       <Bar
         dataKey="Montant relevé"
         fill="#8FC816"
         radius={[10, 10, 0, 0]}
-        barSize={10}
+        barSize={12}
       />
     </BarChart>
   );

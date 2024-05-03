@@ -18,7 +18,8 @@ export default function RootLayout({
       </head>
       <body
         style={{
-          background: `linear-gradient(to right, #ECF7F9, #F4F6F3)`,
+          // background: `linear-gradient(to right, #ECF7F9, #F4F6F3)`,
+          background: "#F8F8F8",
         }}
       >
         <AppProviders>{children}</AppProviders>

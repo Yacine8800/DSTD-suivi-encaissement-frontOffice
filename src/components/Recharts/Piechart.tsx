@@ -26,7 +26,7 @@ const Piechart = () => {
 
   return (
     <div className="flex justify-center">
-      <p>Ratio des modes de paiement</p>
+      <p className="">Ratio des modes de paiement</p>
       <PieChart width={400} height={400}>
         <Pie
           data={data}

@@ -153,6 +153,34 @@ const TableComponent = () => {
 		setIsExpanded(!isExpanded); // Inverse l'état de l'expansion
 	};
 
+
+
+	  const CustomDatePicker = styled(DatePicker)(({ theme }) => ({
+		"datapick:": {
+			backgroundColor: "blue",
+			fontFamily: "Arial, sans-serif",
+			fontWeight: "100",
+		},
+		"& .MuiInputBase-input": {
+			textTransform: "lowercase",
+		  },
+	}));
+
+		const theme = createTheme({
+		palette: {
+			background: {
+				paper: "#fff",
+			},
+			text: {
+				primary: "#173A5E",
+				secondary: "#46505A",
+			},
+			action: {
+				active: "#001E3C",
+			},
+		},
+	});
+
 	function CustomizedInputBase() {
 		return (
 			<Paper
@@ -212,28 +240,9 @@ const TableComponent = () => {
 		setSelectedDate(date);
 	};
 
-	const theme = createTheme({
-		palette: {
-			background: {
-				paper: "#fff",
-			},
-			text: {
-				primary: "#173A5E",
-				secondary: "#46505A",
-			},
-			action: {
-				active: "#001E3C",
-			},
-		},
-	});
 
-	const CustomDatePicker = styled(DatePicker)(({ theme }) => ({
-		"datapick:": {
-			backgroundColor: "blue",
-			fontFamily: "Arial, sans-serif",
-			fontWeight: "100",
-		},
-	}));
+
+
 	return (
 		<>
 			<div className="w-full flex">
@@ -254,7 +263,7 @@ const TableComponent = () => {
 				/>
 				<div className="w-[300px] mr-2 lowercase">
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
-						<DatePicker
+						 <CustomDatePicker
 							className=" p-0 m-0 border-0"
 							value={selectedDate}
 							onChange={handleDateChange}

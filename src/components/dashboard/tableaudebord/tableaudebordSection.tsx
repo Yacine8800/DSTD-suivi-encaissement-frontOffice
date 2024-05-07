@@ -1,5 +1,6 @@
 import Barchart from "@/components/Recharts/barchart";
 import Piechart from "@/components/Recharts/Piechart";
+import PiechartTaux from "@/components/Recharts/PiechartTaux";
 import { Card } from "@mui/material";
 import React from "react";
 
@@ -11,7 +12,14 @@ const TableaudebordSection = () => {
           <Barchart />
         </div>
       </Card>
-      <Piechart />
+      <div className="mt-3">
+        <Piechart />
+
+
+      <PiechartTaux />
+
+      </div>
+     
     </div>
   );
 };

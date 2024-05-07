@@ -4,6 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import expandsOffIcon from "../../public/assets/svg/extendsOff.svg";
 import expandsIcon from "../../public/assets/svg/extends.svg";
+import logoCie from "../../public/assets/images/logoCie.svg";
+
 import LinearWithValueLabel from "./progressBar/progressBar";
 import {
 	createTheme,
@@ -93,7 +95,6 @@ const DataSuivEnc: DataSuivEnc[] = [
 		caisseMode: "2 -1 Espece",
 		banque: "NSIA",
 		montant_banque: 521575,
-
 		montantCaisse: 2266965,
 		montantBordereau: 2266965,
 		dateCloture: "03/12/2024",
@@ -120,7 +121,6 @@ const DataSuivEnc: DataSuivEnc[] = [
 		caisseMode: "2 -1 Espece",
 		banque: "NSIA ",
 		montant_banque: 521575,
-
 		montantCaisse: 2266965,
 		montantBordereau: 2266965,
 		dateCloture: "03/12/2024",
@@ -158,7 +158,7 @@ const TableComponent = () => {
 			<Paper
 				component="form"
 				sx={{ p: "2px 4px", display: "flex", alignItems: "center" }}
-				className="w-[60%] rounded-md shadow-none border-[1px]"
+				className="w-[540px] h-[42px] rounded-md shadow-none border-[1px]"
 				elevation={0}
 			>
 				<IconButton type="button" sx={{ p: "7px" }} aria-label="search">
@@ -236,7 +236,7 @@ const TableComponent = () => {
 	}));
 	return (
 		<>
-			<div className="w-full flex ">
+			<div className="w-full flex">
 				{isOpen && (
 					<div className="absolute top-0 right-0 bottom-0 left-0 flex justify-end items-end text-[#23252F] bg-black bg-opacity-50 z-[1000]">
 						<FormsControl
@@ -252,10 +252,10 @@ const TableComponent = () => {
 					otherValue={DataSuivEnc}
 					className="w-full float-left"
 				/>
-				<div className="w-[40%] mr-3 lowercase">
+				<div className="w-[300px] mr-2 lowercase">
 					<LocalizationProvider dateAdapter={AdapterDayjs}>
 						<DatePicker
-							className="datapick"
+							className=" p-0 m-0 border-0"
 							value={selectedDate}
 							onChange={handleDateChange}
 							sx={{
@@ -264,13 +264,15 @@ const TableComponent = () => {
 								fontSize: 34,
 								textTransform: "lowercase",
 							}}
+							slotProps={{
+								textField: { size: "small" },
+							}}
 						/>
 					</LocalizationProvider>
-					<div></div>
 				</div>
 				<CustomizedInputBase />
 			</div>
-			<div className=" flex justify-center items-center w-full">
+			<div className="flex justify-center items-center w-full">
 				<div
 					className={
 						isExpanded ? "absolute top-0 left-0 w-full items-start" : ""
@@ -502,6 +504,24 @@ const TableComponent = () => {
 									</div>
 								</div>
 							))}
+						</div>
+					</div>
+					<div className="absolute flex justify-center left-0 mt-3 w-full text-center  p-3">
+						<div
+							className={
+								isExpanded ? " text-[11px] text-[#EF7D00] uppercase " : "hidden"
+							}
+						>
+							<Image
+								src={logoCie}
+								alt="Logo Cie"
+								className="w-10 inline mr-2"
+							/>
+							{/* Point de séparation */}
+							<span className="inline-block h-1 w-1 bg-black rounded-md mx-2"></span>
+							<span className=" items-center justify-center text-center left-5">
+								Open Data Eccaissement
+							</span>
 						</div>
 					</div>
 				</div>

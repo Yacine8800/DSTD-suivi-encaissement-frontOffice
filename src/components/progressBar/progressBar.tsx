@@ -12,12 +12,13 @@ function LinearProgressWithLabel(
 	return (
 		<Box
 			sx={{
-				width: "70%",
+				width: "540px",
 				display: "flex",
 				alignItems: "center",
 				padding: "10px",
 				backgroundColor: "white",
 				borderRadius: 1.5,
+				height: 50,
 			}}
 		>
 			<div className="pl-[10px]">
@@ -27,7 +28,7 @@ function LinearProgressWithLabel(
 					Lignes
 				</p>
 			</div>
-			<Box sx={{ width: "50%", mr: 1, ml: 3 }}>
+			<Box sx={{ width: "290px", mr: 1, ml: 3 }}>
 				<LinearProgress
 					variant="determinate"
 					{...props}

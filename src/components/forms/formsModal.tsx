@@ -5,6 +5,8 @@ import AmountFormControl from "../inputs/amountInput";
 // import { Box, Button } from ''
 import SendIcon from "@mui/material/Icon";
 import { ErrorMessage, Formik } from "formik";
+import closeIcon from "../../../public/assets/icon/icons8Close50.svg"; // Importez le fichier SVG de l'icône
+import Image from "next/image";
 
 // interface dataRowInterface {
 //     dateEnc: Date;
@@ -120,6 +122,10 @@ const FormsControl = ({
 		closeModal();
 	};
 
+	const IconCloseModal = () => {
+		closeModal();
+	};
+
 	const date = "new Date()";
 
 	return (
@@ -129,7 +135,18 @@ const FormsControl = ({
 				className=" fixed top-0 right-0 bottom-0 flex justify-end items-center text-[#23252F] "
 			>
 				<div className="bg-white w-[750px] h-full overflow-y-auto">
-					<div className="p-6 ">
+					<div className="p-6">
+						<div className="flex justify-end ">
+							{/* Utilisez l'élément <img> avec la source du fichier SVG */}
+
+							<Image
+								src={closeIcon}
+								alt=""
+								onClick={IconCloseModal}
+								className="w-8 top-0 right-0 cursor-pointer"
+							/>
+							{/* <Image src={expandsIcon} alt="" /> */}
+						</div>
 						<h2 className="text-xl font-bold mb-4">Formulaire d'édition</h2>
 						<div>
 							<Box
@@ -205,7 +222,9 @@ const FormsControl = ({
 														<div className=" h-15 flex justify-start items-start">
 															<p
 																className={
-																	rowData.ecart > 5000
+																	rowData.montantCaisse -
+																		rowData.montantBordereau >=
+																	0
 																		? ` font-bold text-[#1c874a]`
 																		: `font-bold text-[#c14848]`
 																}
@@ -295,18 +314,19 @@ const FormsControl = ({
 														<div className=" h-15 flex justify-start items-start">
 															<p
 																className={
-																	rowData.ecart > 5000
+																	rowData.montantCaisse -
+																		rowData.montant_banque >=
+																	0
 																		? ` font-bold text-[#1c874a]`
 																		: `font-bold text-[#c14848]`
 																}
 															>
-																{rowData.montantCaisse -
-																	rowData.montantBordereau}{" "}
+																{rowData.montantCaisse - rowData.montant_banque}{" "}
 																FCFA
 															</p>
 														</div>
 														<div className=" h-15 flex justify-start items-start">
-															<p className="text-gray-400	">Ecart</p>
+															<p className="text-gray-400	">- Ecart</p>
 														</div>
 													</div>
 												</div>

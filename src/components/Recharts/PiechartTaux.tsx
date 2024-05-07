@@ -38,7 +38,7 @@ const PiechartTaux = () => {
               showValueLabel={true}
             />
           </div>
-          <div className="flex flex-wrap gap-2 mt-8">
+          <div className="flex flex-wrap gap-[80px] mt-8">
             {dataCompletion.map((item, index) => (
               <div key={index} className="flex">
                 <span

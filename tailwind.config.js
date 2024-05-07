@@ -1,11 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+const { nextui } = require("@nextui-org/react");
+const { Chart } = require('chart.js');
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     container: {
@@ -22,9 +25,14 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        yellow: "#FBB040",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+        },
+        chart: {
+          DEFAULT: "#0D1286",
+          foreground: "#0D1286",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -74,15 +82,14 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         scale: "scale 1s ease-in-out infinite",
-
       },
       animationDelay: {
-        '800': '-800ms',
-        '700': '-700ms',
-        '600': '-600ms',
-        '500': '-500ms',
+        800: "-800ms",
+        700: "-700ms",
+        600: "-600ms",
+        500: "-500ms",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [require("tailwindcss-animate"), nextui()],
+};

@@ -3,11 +3,7 @@ import React from "react";
 
 const page = () => {
   return (
-    // <div>
-    //   <Barchart1 />
-    // </div>
-
-    <div className=" ">
+    <div className="">
       <TableaudebordSection />
     </div>
   );

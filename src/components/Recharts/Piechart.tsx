@@ -1,58 +1,87 @@
-"use client";
-import React, { PureComponent } from "react";
+import React from "react";
 import {
-  PieChart,
-  Pie,
-  Sector,
-  Cell,
-  ResponsiveContainer,
-  Legend,
-} from "recharts";
+  CircularProgress,
+  Card,
+  CardBody,
+  CardHeader,
+} from "@nextui-org/react";
 
-const data = [{ name: "Chèques", value: 400 }];
-const COLORS = ["#2F3780", "#DEE1FF"];
-const COLORS2 = ["#009640", "#35915d"];
+export default function App() {
+  const data = [
+    { name: "Chèques", value: 67, color: "#0D1286", color2: "#0D128626" },
+    { name: "Espèces", value: 46, color: "#009640", color2: "#0096401C" },
+  ];
 
-interface LegendEntry {
-  color: string;
-  value: string;
-}
-
-const Piechart = () => {
-  const legendData = data.map((entry, index) => ({
-    color: COLORS[index % COLORS.length],
-    value: entry.name,
-  }));
+  const dataCompletion = [
+    { name: "Lignes complètes", value: 67, color: "#0D1286" },
+    { name: "Lignes incomplètes", value: 46, color: "#0D128626" },
+  ];
 
   return (
-    <div className="flex justify-center">
-      <p className="">Ratio des modes de paiement</p>
-      <PieChart width={400} height={400}>
-        <Pie
-          data={data}
-          cx={90}
-          cy={100}
-          innerRadius={50}
-          outerRadius={60}
-          fill="#8884d8"
-          paddingAngle={3}
-          dataKey="value"
-          cornerRadius={10}
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Legend
-          layout="horizontal"
-          verticalAlign="top"
-          payload={legendData}
-          color="black"
-          wrapperStyle={{ paddingLeft: "-80px", color: "black" }}
-        />
-      </PieChart>
+    <div className="ml-4 overflow-hidden">
+      <Card className="w-[350px] h-[260px] p-1 mt-8 rounded-lg overflow-hidden">
+        <CardHeader className="overflow-hidden ">
+          <p>Ratio des modes de paiement</p>
+        </CardHeader>
+        <CardBody className="justify-center items-center overflow-hidden">
+          <div className="flex">
+            {data.map((item, index) => (
+              <div key={index} className="items-center pl-5">
+                <div className="flex mb-3">
+                  <span
+                    className="w-3 h-3 rounded-full mr-2 mt-2"
+                    style={{ backgroundColor: item.color }}
+                  ></span>
+                  <p className="text-1xL">{item.name}</p>
+                </div>
+                <CircularProgress
+                  classNames={{
+                    svg: `w-36 h-37 bg-[${item.color2}] rounded-full`,
+                    indicator: `text-[${item.color}]`,
+                    track: `stroke-[${item.color}]`,
+                    value: `text-2xl font-semibold text-[${item.color}]`,
+                  }}
+                  value={item.value}
+                  strokeWidth={2}
+                  showValueLabel={true}
+                />
+              </div>
+            ))}
+          </div>
+        </CardBody>
+      </Card>
+      <Card className="w-[350px] h-[320px] p-1 mt-5 rounded-lg overflow-hidden">
+        <CardHeader className="overflow-hidden">
+          <p>Taux de complétion globale</p>
+        </CardHeader>
+        <CardBody className="justify-center items-center overflow-hidden">
+          <div className="flex">
+            <div className="items-center">
+              <CircularProgress
+                classNames={{
+                  svg: "w-40 h-40",
+                  indicator: `text-[#0D1286]`,
+                  track: "stroke-[#0D128626]",
+                  value: `w-20 h-20 mt-10 ml-10 text-2xl font-semibold bg-[#0D1286] rounded-full text-white`,
+                }}
+            
+                value={75}
+                strokeWidth={2}
+                showValueLabel={true}
+              />
+              {dataCompletion.map((item, index) => (
+                <div key={index} className="flex flex-row">
+                  <span
+                    className="w-3 h-3 rounded-full mr-2 mt-2"
+                    style={{ backgroundColor: item.color }}
+                  ></span>
+                  <p className="text-1xL">{item.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </CardBody>
+      </Card>
     </div>
   );
-};
-
-export default Piechart;
+}

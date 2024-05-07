@@ -106,7 +106,7 @@ const renderLegend = (props: any) => {
 
 const Barchart1 = () => {
   return (
-    <BarChart width={700} height={600} data={data} barGap={10}>
+    <BarChart width={852} height={560} data={data} barCategoryGap={2}>
       <XAxis
         dataKey="name"
         tick={customTick}
@@ -130,20 +130,20 @@ const Barchart1 = () => {
           fontSize: "25px",
           fontFamily: "Open Sans",
           justifyContent: "start",
-          fontWeight: "400",
+          fontWeight: "600",
           lineHeight: "20px",
         }}
       />
       <Bar
         dataKey="Montant Bordereau"
         fill="#58969E"
-        radius={[10, 10, 0, 0]}
+        radius={[10, 10, 10, 10]}
         barSize={12}
       />
       <Bar
         dataKey="Montant relevé"
         fill="#8FC816"
-        radius={[10, 10, 0, 0]}
+        radius={[10, 10, 10, 10]}
         barSize={12}
       />
     </BarChart>

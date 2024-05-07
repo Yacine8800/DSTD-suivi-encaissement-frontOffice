@@ -117,7 +117,7 @@ const Barchart1 = () => {
         contentStyle={{
           fontSize: "10px",
           lineHeight: "15px",
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          backgroundColor: "rgba(255, 255, 255, 0.9)",
           border: "none",
           borderRadius: "4px",
           padding: "10px",

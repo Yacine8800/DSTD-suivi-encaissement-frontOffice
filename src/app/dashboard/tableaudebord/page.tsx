@@ -2,11 +2,11 @@ import TableaudebordSection from "@/components/dashboard/tableaudebord/tableaude
 import React from "react";
 
 const page = () => {
-  return (
-    <div className="">
-      <TableaudebordSection />
-    </div>
-  );
+	return (
+		<div className=" bg-slate-400 ">
+			<TableaudebordSection />
+		</div>
+	);
 };
 
 export default page;

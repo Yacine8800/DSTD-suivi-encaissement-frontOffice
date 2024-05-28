@@ -20,6 +20,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        bleupie: "#0D1286",
+        vertpie: "#0D128626",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

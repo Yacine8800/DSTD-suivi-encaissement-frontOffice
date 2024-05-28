@@ -97,7 +97,7 @@ const renderLegend = (props: any) => {
 					<svg width="10" height="10" style={{ marginRight: 5 }}>
 						<rect width="10" height="10" rx="5" ry="5" fill={entry.color} />
 					</svg>
-					<span style={{ fontSize: "10px" }}>{entry.value}</span>
+					<span style={{ fontSize: "14px" }}>{entry.value}</span>
 				</li>
 			))}
 		</ul>
@@ -117,7 +117,7 @@ const Barchart1 = () => {
 				contentStyle={{
 					fontSize: "10px",
 					lineHeight: "15px",
-					backgroundColor: "rgba(255, 255, 255, 0.8)",
+					backgroundColor: "rgba(255, 255, 255, 0.9)",
 					border: "none",
 					borderRadius: "4px",
 					padding: "10px",
@@ -127,7 +127,7 @@ const Barchart1 = () => {
 				content={renderLegend}
 				verticalAlign="top"
 				wrapperStyle={{
-					fontSize: "25px",
+					fontSize: "15px",
 					fontFamily: "Open Sans",
 					justifyContent: "start",
 					fontWeight: "600",

@@ -19,6 +19,9 @@ const config: Config = {
       },
       colors:{
         yellow: "#FBB040",
+        green : "#009640",
+        bleupie: "#0D1286",
+        vertpie: "#0D128626",
       },
       animation: {
         scale: "scale 1s ease-in-out infinite",

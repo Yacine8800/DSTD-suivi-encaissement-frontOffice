@@ -17,18 +17,18 @@ export default function DashboardLayout({ children }: DashboardLayoutDTO) {
 		"ENCAISSEMENT • DESCRIPTION"
 	);
 
-	return (
-		<NextUIProvider>
-			<Provider store={store}>
-				<AuthGuard>
-					<Sidebar onTitleChange={setSessionTitle}>
-						<div className="h-screen flex-1 overflow-y-auto">
-							<MainNavbar sessionTitle={sessionTitle} />
-							{children}
-						</div>
-					</Sidebar>
-				</AuthGuard>
-			</Provider>
-		</NextUIProvider>
-	);
+  return (
+    <NextUIProvider>
+      <Provider store={store}>
+        <AuthGuard>
+          <Sidebar onTitleChange={setSessionTitle}>
+            <div className="h-screen flex-1 overflow-y-auto">
+              <MainNavbar sessionTitle={sessionTitle} />
+              {children}
+            </div>
+          </Sidebar>
+        </AuthGuard>
+      </Provider>
+    </NextUIProvider>
+  );
 }

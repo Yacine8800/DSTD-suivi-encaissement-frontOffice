@@ -1,5 +1,5 @@
 "use client";
-import React, { PureComponent } from "react";
+import React, { PureComponent, use, useEffect, useState } from "react";
 import {
 	BarChart,
 	Bar,
@@ -105,8 +105,64 @@ const renderLegend = (props: any) => {
 };
 
 const Barchart1 = () => {
+	// responsive avec un évènement qui écoute la taille de la fenetre
+	const [largeur, setLargeur] = useState(852);
+
+	const afficherTailleFenetre = () => {
+		const largeurFenetre = window.innerWidth;
+		console.log("Largeur de la fenêtre : " + largeurFenetre + " pixels");
+		console.log("Hauteur de la fenêtre : " + window.innerHeight + " pixels");
+
+		let newLargeur;
+		switch (true) {
+			case largeurFenetre > 1600:
+				newLargeur = 1500;
+				break;
+			case largeurFenetre > 1300:
+				newLargeur = 1300;
+				break;
+			case largeurFenetre > 1000:
+				newLargeur = 1200;
+				break;
+			case largeurFenetre > 700:
+				newLargeur = 900;
+				break;
+			default:
+				newLargeur = 600;
+		}
+
+		setLargeur(newLargeur);
+	};
+
+	useEffect(() => {
+		afficherTailleFenetre();
+		window.addEventListener("resize", afficherTailleFenetre);
+
+		// Cleanup event listener on component unmount
+		return () => {
+			window.removeEventListener("resize", afficherTailleFenetre);
+		};
+	}, []);
 	return (
-		<BarChart width={852} height={560} data={data} barCategoryGap={2}>
+		<BarChart
+			width={largeur}
+			height={560}
+			data={data}
+			barCategoryGap={2}
+			className="overflow-auto  w-full"
+		>
+			<Legend
+				content={renderLegend}
+				verticalAlign="top"
+				wrapperStyle={{
+					fontSize: "15px",
+					fontFamily: "Open Sans",
+					justifyContent: "start",
+					fontWeight: "600",
+					lineHeight: "20px",
+				}}
+				className="absolute top-0 left-0 right-auto "
+			/>
 			<XAxis
 				dataKey="name"
 				tick={customTick}
@@ -121,17 +177,6 @@ const Barchart1 = () => {
 					border: "none",
 					borderRadius: "4px",
 					padding: "10px",
-				}}
-			/>
-			<Legend
-				content={renderLegend}
-				verticalAlign="top"
-				wrapperStyle={{
-					fontSize: "15px",
-					fontFamily: "Open Sans",
-					justifyContent: "start",
-					fontWeight: "600",
-					lineHeight: "20px",
 				}}
 			/>
 			<Bar

@@ -20,7 +20,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import FormsControl from "./forms/formsModal";
 
 import "./customTable.css";
-import MainNavbar from "@/layout/dashboard-layout/mainNavbar";
 interface AliasMapping {
 	[key: string]: string;
 }
@@ -257,9 +256,6 @@ const TableComponent = () => {
 						/>
 					</div>
 				)}
-				<div className="hidden">
-					<MainNavbar isExpanded={isExpanded} />
-				</div>
 				<LinearWithValueLabel
 					value={progress}
 					otherValue={DataSuivEnc}
